@@ -13,5 +13,6 @@ end
 gem 'jquery-rails'
 
 group :test, :development do
-  gem "rspec-rails", "~> 2.0"
+  gem 'rspec-rails', '~> 2.0'
+  gem 'mocha', '~> 0.12.2', require: false
 end

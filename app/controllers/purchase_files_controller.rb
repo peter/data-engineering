@@ -32,15 +32,10 @@ class PurchaseFilesController < ApplicationController
     end
   end
 
-  # GET /purchase_files/1/edit
-  def edit
-    @purchase_file = PurchaseFile.find(params[:id])
-  end
-
   # POST /purchase_files
   # POST /purchase_files.json
   def create
-    @purchase_file = PurchaseFile.new(params[:purchase_file])
+    @purchase_file = PurchaseFile.new(purchase_file_params)
 
     respond_to do |format|
       if @purchase_file.save
@@ -48,22 +43,6 @@ class PurchaseFilesController < ApplicationController
         format.json { render json: @purchase_file, status: :created, location: @purchase_file }
       else
         format.html { render action: "new" }
-        format.json { render json: @purchase_file.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /purchase_files/1
-  # PUT /purchase_files/1.json
-  def update
-    @purchase_file = PurchaseFile.find(params[:id])
-
-    respond_to do |format|
-      if @purchase_file.update_attributes(params[:purchase_file])
-        format.html { redirect_to @purchase_file, notice: 'Purchase file was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
         format.json { render json: @purchase_file.errors, status: :unprocessable_entity }
       end
     end
@@ -78,6 +57,19 @@ class PurchaseFilesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to purchase_files_url }
       format.json { head :no_content }
+    end
+  end
+
+  private
+
+  def purchase_file_params
+    if uploaded_file = params[:purchase_file] && params[:purchase_file][:uploaded_file]
+      {
+        name: uploaded_file.original_filename,
+        contents: uploaded_file.read
+      }
+    else
+      {}
     end
   end
 end

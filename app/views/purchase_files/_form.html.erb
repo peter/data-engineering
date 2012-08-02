@@ -1,3 +1,25 @@
+<p>
+  With this form you can upload a tab delimited file with the following columns:
+</p>
+
+<ul>
+  <li>purchaser name</li>
+  <li>item description</li>
+  <li>item price</li>
+  <li>purchase count</li>
+  <li>merchant address</li>
+  <li>merchant name</li>
+</ul>
+
+<p>
+ It is assumed that the columns will always be in the order given above, that there will always be data in each column, and that there will always be a header line. An example purchase file can be found <%= link_to("here", "/example_input.tab") %>.
+</p>
+
+<p>
+  When you submit the form the purchase information is parsed, normalized, and stored in a relational database and
+  the total amount of gross revenue is displayed.
+</p>
+
 <%= form_for(@purchase_file) do |f| %>
   <% if @purchase_file.errors.any? %>
     <div id="error_explanation">
@@ -11,19 +33,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div>
+    <%= f.file_field 'uploaded_file' %>
   </div>
-  <div class="field">
-    <%= f.label :contents %><br />
-    <%= f.text_area :contents %>
-  </div>
-  <div class="field">
-    <%= f.label :processing_errors %><br />
-    <%= f.text_area :processing_errors %>
-  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Upload' %>
   </div>
 <% end %>

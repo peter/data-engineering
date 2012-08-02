@@ -16,6 +16,8 @@
 * Design documentation
 * Heroku deploy https://gist.github.com/3025502
 
+* The tests need to be run with RAILS_ENV=test bin/rake
+
 ## Introduction
 
 This is my implementation of the challenge for "Senior Software Engineer".
@@ -28,6 +30,13 @@ This application was developed on the following technology stack:
 * bundler 1.2.0.rc
 * rails 3.2.7
 * PostgreSQL 9.1.3
+
+## Design
+
+* I had uploaded_file as an attribute setter in the model that took an instance of ActionDispatch::Http::UploadedFile
+  and extracted the name and contents from it. However, I realized when I was writing the test for the model that this
+  created a cross dependency from the model layer to the controller/view layer so I decided to move that logic
+  to the controller.
 
 ## Command Line History
 
@@ -50,11 +59,16 @@ rake db:create
 rm public/index.html
 bin/rails generate scaffold PurchaseFile name:string contents:text processing_errors:text
 bin/rake db:migrate
-# Git commit
+
+# -- git commit ---
 
 # Added NOT NULL constraints to purchase_files
 # Added root route
 
 # Added PurchaseFile model test
+
+# -- git commit ---
+
+# Implemented basic file upload UI
 
 ```
