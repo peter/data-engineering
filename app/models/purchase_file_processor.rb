@@ -6,17 +6,20 @@ class PurchaseFileProcessor
   end
 
   def process!
-    purchase_file.processing_errors = []
+    errors = []
     PurchaseFileParser.new(purchase_file.contents).rows.each_with_index do |row, i|
       begin
         process_row!(row)
       rescue ActiveRecord::RecordInvalid => exception
         line = i+1
         log_exception(row, line, exception)
-        purchase_file.processing_errors << {line: line, exception: exception.message}
+        errors << {line: line, exception: exception.message}
       end
     end
-    purchase_file.save! if purchase_file.processing_errors.present?
+    if errors.present?
+      purchase_file.processing_errors = errors
+      purchase_file.save!
+    end
   end
 
   private
