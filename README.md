@@ -20,8 +20,13 @@ More about me at http://marklunds.com/peter/cv
 ```
 git clone git@github.com:peter/data-engineering.git
 cd data-engineering
+
+# If you prefer sqlite over Postgresql:
+# cp config/database.sqlite.yml config/database.yml
+# Add gem 'sqlite3' to Gemfile
+
 bundle install --binstubs
-# If you prefer Postgresql over sqlite: cp config/database.postgresql.yml config/database.yml
+
 bin/rake db:migrate
 bin/rake
 bin/rails s
