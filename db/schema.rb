@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(:version => 20120802154625) do
 
   create_table "purchase_files", :force => true do |t|
-    t.string   "name"
-    t.text     "contents"
+    t.string   "name",              :null => false
+    t.text     "contents",          :null => false
     t.text     "processing_errors"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false

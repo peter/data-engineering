@@ -1,13 +1,16 @@
-# Challenge for Software Engineer - Big Data
+# Challenge for Software Engineer
 
 ## TODO
 
-* Root route
 * Purchase file model tests
+* Make tests pass
 * Purchase file controller tests
 * File upload UI
-* Bootstrap CSS
+
 * Other models
+
+* Bootstrap CSS
+
 * Authentication
 * Setup instructions
 * Design documentation
@@ -47,4 +50,11 @@ rake db:create
 rm public/index.html
 bin/rails generate scaffold PurchaseFile name:string contents:text processing_errors:text
 bin/rake db:migrate
+# Git commit
+
+# Added NOT NULL constraints to purchase_files
+# Added root route
+
+# Added PurchaseFile model test
+
 ```
