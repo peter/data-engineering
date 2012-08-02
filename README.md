@@ -2,19 +2,10 @@
 
 ## TODO
 
-* Purchase file model tests
-* Make tests pass
-* Purchase file controller tests
-* File upload UI
-
-* Other models
-
-* Bootstrap CSS
-
-* Authentication
+* Heroku deploy https://gist.github.com/3025502
 * Setup instructions
 * Design documentation
-* Heroku deploy https://gist.github.com/3025502
+* Authentication?
 
 ## Introduction
 
@@ -75,4 +66,11 @@ bin/rails generate model Purchaser name:string
 bin/rails generate model Item description:text
 bin/rails generate model Merchant name:string address:text
 bin/rails generate model Purchase item_price_in_cents:integer total_price_in_cents:integer item_count:integer item:references purchaser:references merchant:references purchase_file:references
+
+# Added purchase file parsing/processing code
+
+# -- git commit ---
+
+# Add gem 'thin' to Gemfile # Typical web server for Heroku deploy
+echo "web: bundle exec rails server thin -p \$PORT -e \$RACK_ENV" > Procfile
 ```
