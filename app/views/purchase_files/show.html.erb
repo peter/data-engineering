@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @purchase_file.name %>
+</p>
+
+<p>
+  <b>Contents:</b>
+  <%= @purchase_file.contents %>
+</p>
+
+<p>
+  <b>Processing errors:</b>
+  <%= @purchase_file.processing_errors %>
+</p>
+
+
+<%= link_to 'Edit', edit_purchase_file_path(@purchase_file) %> |
+<%= link_to 'Back', purchase_files_path %>

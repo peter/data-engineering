@@ -1,0 +1,27 @@
+<h1>Listing purchase_files</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Contents</th>
+    <th>Processing errors</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @purchase_files.each do |purchase_file| %>
+  <tr>
+    <td><%= purchase_file.name %></td>
+    <td><%= purchase_file.contents %></td>
+    <td><%= purchase_file.processing_errors %></td>
+    <td><%= link_to 'Show', purchase_file %></td>
+    <td><%= link_to 'Edit', edit_purchase_file_path(purchase_file) %></td>
+    <td><%= link_to 'Destroy', purchase_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Purchase file', new_purchase_file_path %>

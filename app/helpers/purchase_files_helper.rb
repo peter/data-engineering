@@ -1,0 +1,2 @@
+module PurchaseFilesHelper
+end
