@@ -72,5 +72,8 @@ bin/rails generate model Purchase item_price_in_cents:integer total_price_in_cen
 # -- git commit ---
 
 # Add gem 'thin' to Gemfile # Typical web server for Heroku deploy
+bundle install
 echo "web: bundle exec rails server thin -p \$PORT -e \$RACK_ENV" > Procfile
+heroku apps:create peter-data-engineering
+git push heroku master
 ```
