@@ -16,8 +16,6 @@
 * Design documentation
 * Heroku deploy https://gist.github.com/3025502
 
-* The tests need to be run with RAILS_ENV=test bin/rake
-
 ## Introduction
 
 This is my implementation of the challenge for "Senior Software Engineer".
@@ -71,4 +69,10 @@ bin/rake db:migrate
 
 # Implemented basic file upload UI
 
+# -- git commit ---
+
+bin/rails generate model Purchaser name:string
+bin/rails generate model Item description:text
+bin/rails generate model Merchant name:string address:text
+bin/rails generate model Purchase item_price_in_cents:integer total_price_in_cents:integer item_count:integer item:references purchaser:references merchant:references purchase_file:references
 ```

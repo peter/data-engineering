@@ -1,3 +1,13 @@
+<%
+  @purchases_info = []
+  @purchases_info << "#{@purchase_file.purchases.count} purchases"
+  if @purchase_file.processing_errors.present?
+    @purchases_info << content_tag(:span, class: 'warn') do
+      "#{@purchase_file.processing_errors.size} errors"
+    end
+  end
+%>
+
 <h1>Purchase File: <%= @purchase_file.name %></h1>
 
 <p id="notice"><%= notice %></p>
@@ -5,6 +15,12 @@
 <p>
   <strong>Uploaded At:</strong>
   <%= @purchase_file.created_at %>
+</p>
+
+<p>
+  <strong>Total Gross Revenue:</strong>
+  <%= @purchase_file.total_gross_revenue %>
+  (<%= @purchases_info.join(', ').html_safe %>)
 </p>
 
 <p>
