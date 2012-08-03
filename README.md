@@ -61,7 +61,7 @@ requirements, I figured that in a real scenario an upload history would be valua
 ### Principles/Discussion
 
 * I strive to adhere to REST and other Rails conventions
-* I usually practice TDD and strive for a high test coverage. Sometimes I will prototype the code first and then rewrite
+* I practice TDD and strive for a high test coverage. Sometimes I will prototype the code first and then rewrite
   it with tests. For this app, due to time constraints, I decided to not build out a full test suite.
 * For upgradability and maintainability I keep gem dependencies at a minimum
 * I attempt to modularize applications and find a good hierarchy of dependencies. Ideally, infrastructure and business logic
@@ -72,6 +72,9 @@ requirements, I figured that in a real scenario an upload history would be valua
   to the controller.
 * To avoid any rounding issues with floats I decided to store prices in cents and to clearly communicate this in the
   column names.
+* Other design considerations that I am interested in include - programming at an appropriate level of abstraction,
+  factoring code into small classes and methods, SRP (cohesion), pure functions (minimizing coupling),
+  and clear contracts of functions.
 
 ## Demo
 
